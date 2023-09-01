@@ -1,0 +1,48 @@
+
+
+<div class="whole-container">
+    <div [hidden]="submitted">
+        <form class="main-container"  (ngSubmit)="onSubmit()"
+        #heroForm="ngForm">
+            <div class="icon-container">
+                <img src="assets/icon-star.svg" alt="" id="star-icon">
+            </div>
+            <div class="title-container">
+                <h2>How did we do?</h2>
+            </div>
+            <div class="comment-container">
+                <p>Please let use know how we did with your support request. All feedback is aprreciated to help us improve our offering!</p>
+            </div>
+            <div class="rating-values-container">
+                <p *ngFor="let point of points" class="number-item"
+                    (click)="selectPoints($event); 
+                            removeSelectedPointStyles(); 
+                            stylePoints($event);">
+                    {{ point }} 
+                </p>
+            </div>
+            <div class="button-container">
+                <button type="submit" id="submit"
+                [disabled]="!heroForm.form.valid">submit</button>
+            </div>    
+        </form>
+    </div>
+    
+    <div [hidden]="!submitted">
+        <div class="main-container-thank" >
+            <div class="image-container">
+                <img src="/assets/illustration-thank-you.svg" alt="">
+            </div>    
+            <div class="announce-container">
+                Your selected {{model.points}} out of 5
+            </div>
+            <div class="title-container">
+                <h2>Thank you!</h2>
+            </div>
+            <div class="comment-container">
+                <p>We appreciate you making the time to give a rating. If you ever need more support, don't hesitate to get in touch!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
